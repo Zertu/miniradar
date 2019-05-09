@@ -5,8 +5,8 @@
     :default-sort="{prop: 'sprite_list', order: 'ascending'}"
   >
     <el-table-column prop="winner_name" label="擂主名" sortable width="180"></el-table-column>
-    <el-table-column prop="latitude" label="经度" sortable width="180" :formatter="formatter"></el-table-column>
-    <el-table-column prop="longtitude" label="纬度" sortable width="180" :formatter="formatter"></el-table-column>
+    <el-table-column prop="latitude" label="纬度" sortable width="180" :formatter="formatter"></el-table-column>
+    <el-table-column prop="longtitude" label="经度" sortable width="180" :formatter="formatter"></el-table-column>
     <el-table-column prop="winner_fightpower" label="擂主战力" sortable width="180"></el-table-column>
     <el-table-column label="上场妖灵">
       <template slot-scope="sprite">

@@ -9,11 +9,8 @@ class HomeController extends Controller {
   }
   async leitai() {
     const { ctx, service } = this;
-    ctx.body = await service.app.getInfo();
-  }
-  async config() {
-    const { ctx, service } = this;
-    ctx.body = await service.app.getConfig();
+    const query = ctx.query;
+    ctx.body = await service.app.getInfo(query.latitude, query.longitude);
   }
 }
 
