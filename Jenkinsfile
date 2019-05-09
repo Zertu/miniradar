@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('server') {
       steps {
-        sh 'cd server'
+        sh '''cd server
+npm start'''
       }
     }
   }
