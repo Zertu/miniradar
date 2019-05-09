@@ -4,7 +4,7 @@ pipeline {
     stage('server') {
       steps {
         sh '''cd server
-npm start'''
+docker run -d -p 7001:8888'''
       }
     }
   }
