@@ -1,4 +1,4 @@
-FROM hub.c.163.com/nce2/nodejs:0.12.2  # Create app directory
+FROM node:10-alpine
 RUN mkdir -p /home/Service
 WORKDIR /home/Service    # Bundle app source
 COPY . /
