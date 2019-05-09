@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('server') {
       steps {
-        sh 'cd server && docker build -t mynodeapp && docker run -d -p 7001:8888 mynodeapp'
+        sh 'cd server && docker build -t mynodeapp . && docker run -d -p 7001:8888 mynodeapp'
       }
     }
   }
