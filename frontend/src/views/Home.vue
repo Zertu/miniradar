@@ -11,23 +11,35 @@
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
+    <DataTable :data="data"></DataTable>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import DataTable from "../components/DataTable";
 export default {
   name: "Home",
+  components: {
+    DataTable
+  },
   data() {
     return {
       form: {
         longitude: "",
         latitude: ""
-      }
+      },
+      data: []
     };
   },
   methods: {
-    onSubmit() {
-      console.log(this.form);
+    async onSubmit() {
+      const result = await axios.get("/api/leitai", {
+        params: {
+          ...this.form
+        }
+      });
+      this.data = result.data;
     }
   }
 };
@@ -35,5 +47,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

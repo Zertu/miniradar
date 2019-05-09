@@ -11,6 +11,10 @@ class HomeController extends Controller {
     const { ctx, service } = this;
     ctx.body = await service.app.getInfo();
   }
+  async config() {
+    const { ctx, service } = this;
+    ctx.body = await service.app.getConfig();
+  }
 }
 
 module.exports = HomeController;

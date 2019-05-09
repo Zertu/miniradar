@@ -62,11 +62,18 @@ a.router-link-exact-active {
 }
 </style>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       isCollapse: true
     };
+  },
+  created: async ()=> {
+    const {data} =await axios.get('/api/config')
+    const {Data,Url}=data
+    localStorage.setItem('pet',JSON.stringify(Data))
+    localStorage.setItem('peturl',Url)
   },
   methods: {
     handleOpen(key, keyPath) {
