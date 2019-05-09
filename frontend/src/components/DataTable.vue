@@ -2,13 +2,13 @@
   <el-table
     :data="data"
     style="width: 100%"
-    :default-sort="{prop: 'winner_fightpower', order: 'ascending'}"
+    :default-sort="{prop: 'sprite_list', order: 'ascending'}"
   >
     <el-table-column prop="winner_name" label="擂主名" sortable width="180"></el-table-column>
     <el-table-column prop="latitude" label="经度" sortable width="180" :formatter="formatter"></el-table-column>
     <el-table-column prop="longtitude" label="纬度" sortable width="180" :formatter="formatter"></el-table-column>
-    <el-table-column prop="winner_fightpower" label="战力" sortable width="180"></el-table-column>
-    <el-table-column prop="sprite_list" label="上场妖灵">
+    <el-table-column prop="winner_fightpower" label="擂主战力" sortable width="180"></el-table-column>
+    <el-table-column label="上场妖灵">
       <template slot-scope="sprite">
         <div v-for="elm of formatpet(data[sprite.$index].sprite_list)" v-bind:key="elm.fightpower">
           <img height="50px" :src="getsrc(elm.SmallImgPath)">
@@ -16,6 +16,13 @@
         </div>
       </template>
     </el-table-column>
+    <el-table-column
+      prop="sprite_list"
+      label="上场妖灵战力"
+      sortable
+      width="180"
+      :formatter="formatsprite"
+    ></el-table-column>
   </el-table>
 </template>
 
@@ -33,6 +40,13 @@ export default {
       const url =
         localStorage.getItem("peturl") || "http://hy.gwgo.qq.com/sync/pet/";
       return url + src;
+    },
+    formatsprite(_, __, cellValue) {
+      return cellValue
+        .map(_ => _.fightpower)
+        .reduce((sum, current) => {
+          return sum + current;
+        });
     },
     formatpet(cellValue) {
       return cellValue.map(val => {
