@@ -4,4 +4,4 @@ WORKDIR /home/Service
 COPY . /home/Service 
 RUN npm install --no-bin-links && npm install -g @vue/cli
 EXPOSE 4000
-CMD ["npm", "start"]
+CMD npm run serve
