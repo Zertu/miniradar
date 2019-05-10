@@ -9,8 +9,6 @@
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
           :collapse="isCollapse"
           :router="true"
         >
@@ -72,13 +70,5 @@ export default {
     localStorage.setItem("pet", JSON.stringify(Data));
     localStorage.setItem("peturl", Url);
   },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  }
 };
 </script>

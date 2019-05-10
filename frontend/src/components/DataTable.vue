@@ -13,7 +13,7 @@
     <el-table-column prop="winner_fightpower" label="擂主战力" sortable width="180"></el-table-column>
     <el-table-column label="上场妖灵">
       <template slot-scope="sprite">
-        <div v-for="elm of formatpet(data[sprite.$index].sprite_list)" v-bind:key="elm.fightpower">
+        <div v-for="elm of formatpet(data[sprite.$index].sprite_list)" v-bind:key="elm.$index">
           <img height="50px" :src="getsrc(elm.SmallImgPath)">
           <span>{{elm.Name}}等级:{{elm.level}}战斗力:{{elm.fightpower}}</span>
         </div>
