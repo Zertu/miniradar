@@ -20,7 +20,7 @@ fi'''
         }
         stage('front') {
           steps {
-            sh 'cd frontend && docker build -t myfront . && docker run -d -p 4000:4000 myfront'
+            sh 'cd frontend && docker build -t myfront . && docker run -d -p 4000:80 myfront'
           }
         }
       }
