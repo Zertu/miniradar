@@ -3,10 +3,10 @@ pipeline {
   stages {
     stage('del') {
       steps {
-        sh 'docker rm `docker ps -a -q`'
+        sh 'docker rm -f `docker ps -a -q`'
       }
     }
-    stage('') {
+    stage('error') {
       parallel {
         stage('server') {
           steps {
