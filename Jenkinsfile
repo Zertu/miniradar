@@ -3,7 +3,12 @@ pipeline {
   stages {
     stage('del') {
       steps {
-        sh 'sudo docker rm -f `docker ps -a -q`'
+        sh '''exsitContainer=`docker ps -a --filter name=$NAME |awk \'{print $1}\'|tail -n +2`
+echo $exsitContainer
+if [ -n "$exsitContainer" ]; then 
+    docker stop $exsitContainer
+    docker rm $exsitContainer 
+fi'''
       }
     }
     stage('error') {
