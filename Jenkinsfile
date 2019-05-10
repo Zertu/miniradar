@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('del') {
       steps {
-        sh 'docker rm -f `docker ps -a -q`'
+        sh 'sudo docker rm -f `docker ps -a -q`'
       }
     }
     stage('error') {
