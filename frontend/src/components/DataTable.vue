@@ -7,9 +7,9 @@
     style="width: 100%"
     :default-sort="{prop: 'sprite_list', order: 'ascending'}"
   >
-    <el-table-column prop="winner_name" label="擂主名" sortable width="180"></el-table-column>
-    <el-table-column prop="latitude" label="纬度" sortable width="180" :formatter="formatter"></el-table-column>
-    <el-table-column prop="longtitude" label="经度" sortable width="180" :formatter="formatter"></el-table-column>
+    <el-table-column prop="winner_name" label="擂主名" width="180"></el-table-column>
+    <el-table-column prop="latitude" label="纬度" width="180" :formatter="formatter"></el-table-column>
+    <el-table-column prop="longtitude" label="经度" width="180" :formatter="formatter"></el-table-column>
     <el-table-column prop="winner_fightpower" label="擂主战力" sortable width="180"></el-table-column>
     <el-table-column label="上场妖灵">
       <template slot-scope="sprite">
@@ -25,6 +25,7 @@
       sortable
       width="180"
       :formatter="formatsprite"
+      :sort-method="sort"
     ></el-table-column>
     <el-table-column label="操作">
       <template slot-scope="scope">
@@ -58,6 +59,10 @@ export default {
         .reduce((sum, current) => {
           return sum + current;
         });
+    },
+    sort (a,b){
+      console.log(this.formatsprite(1,1,a.sprite_list))
+       return this.formatsprite(1,1,a.sprite_list)<this.formatsprite(1,1,b.sprite_list)
     },
     handleCopy(_,row){
       const message=`${row.latitude},${row.longtitude}`
