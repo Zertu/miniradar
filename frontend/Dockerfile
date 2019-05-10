@@ -2,6 +2,6 @@ FROM node:10-alpine
 RUN mkdir -p /home/Service
 WORKDIR /home/Service   
 COPY . /home/Service 
-RUN npm install --no-bin-links 
+RUN npm install --no-bin-links &&  npm i @vue/cli-service
 EXPOSE 4000
-CMD ./node_modules/.bin/vue-cli-service serve
+CMD npx vue-cli-service serve
