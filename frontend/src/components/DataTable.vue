@@ -1,5 +1,8 @@
 <template>
   <el-table
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
     :data="data"
     style="width: 100%"
     :default-sort="{prop: 'sprite_list', order: 'ascending'}"
@@ -23,14 +26,22 @@
       width="180"
       :formatter="formatsprite"
     ></el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <el-button size="mini" @click="handleCopy(scope.$index, scope.row)">复制经纬度</el-button>
+      </template>
+    </el-table-column>
   </el-table>
 </template>
 
 <script>
 import serach from "../util/serach";
+import copy from 'copy-to-clipboard';
+
 export default {
   props: {
-    data: Array
+    data: Array,
+    loading: Boolean
   },
   methods: {
     formatter(_, __, cellValue) {
@@ -46,6 +57,15 @@ export default {
         .map(_ => _.fightpower)
         .reduce((sum, current) => {
           return sum + current;
+        });
+    },
+    handleCopy(_,row){
+      const message=`${row.latitude},${row.longtitude}`
+      copy(message)
+      this.$notify({
+          title: '成功复制',
+          message: message,
+          type: 'success'
         });
     },
     formatpet(cellValue) {

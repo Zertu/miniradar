@@ -12,20 +12,17 @@
           @open="handleOpen"
           @close="handleClose"
           :collapse="isCollapse"
+          :router="true"
         >
-          <el-menu-item index="2">
+          <el-menu-item index="/">
             <i class="el-icon-menu"></i>
-            <span slot="title">
-              <router-link to="/">擂台</router-link>
-            </span>
+            <span slot="title">擂台</span>
           </el-menu-item>
-          <el-menu-item index="3">
+          <el-menu-item :disabled="true" index="/about">
             <i class="el-icon-document"></i>
-            <span slot="title">
-              <router-link to="/about">妖灵</router-link>
-            </span>
+            <span slot="title">妖灵</span>
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item :disabled="true" index="4">
             <i class="el-icon-setting"></i>
             <span slot="title">神灵</span>
           </el-menu-item>
@@ -69,11 +66,11 @@ export default {
       isCollapse: true
     };
   },
-  created: async ()=> {
-    const {data} =await axios.get('/api/config')
-    const {Data,Url}=data
-    localStorage.setItem('pet',JSON.stringify(Data))
-    localStorage.setItem('peturl',Url)
+  created: async () => {
+    const { data } = await axios.get("/api/config");
+    const { Data, Url } = data;
+    localStorage.setItem("pet", JSON.stringify(Data));
+    localStorage.setItem("peturl", Url);
   },
   methods: {
     handleOpen(key, keyPath) {

@@ -45,6 +45,7 @@ class LeitaiService extends Service {
         if (typeof data === 'object') {
           const buf = Buffer.from(data);
           const tempresult = buf.toString('utf8', 4);
+          ws.close();
           res(tempresult);
         }
       };
@@ -75,7 +76,11 @@ class LeitaiService extends Service {
       ws.onmessage = evt => {
         const { data } = evt;
         if (typeof data === 'object') {
+          ws.close();
           res(handleData(data));
+        } else if (typeof data !== 'string') {
+          ws.close();
+          res([]);
         }
       };
       ws.onerror = err => {
