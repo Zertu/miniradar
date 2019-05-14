@@ -20,9 +20,9 @@
             <i class="el-icon-document"></i>
             <span slot="title">妖灵</span>
           </el-menu-item>
-          <el-menu-item :disabled="true" index="4">
+          <el-menu-item index="/advanced">
             <i class="el-icon-setting"></i>
-            <span slot="title">神灵</span>
+            <span slot="title">加强版搜索</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
