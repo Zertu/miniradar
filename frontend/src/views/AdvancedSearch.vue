@@ -27,8 +27,8 @@ export default {
       const [_, __, coordinate] = value;
       const [longitude, latitude] = coordinate.split(",");
       const result = await getleitai(
+        Number(latitude * 1000000),
         Number(longitude * 1000000),
-        Number(latitude * 1000000)
       );
       this.data = result.data;
       this.loading = false;
