@@ -8,4 +8,5 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/leitai', controller.home.leitai);
   router.get('/config', controller.config.index);
+  router.get('/statistics', controller.statistics.index);
 };
